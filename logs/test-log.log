@@ -1,0 +1,6 @@
+2025-01-15 20:16:03 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Starting Vehicle Property Validation Test
+2025-01-15 20:17:25 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Starting Vehicle Property Validation Test
+2025-01-15 20:17:25 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Extracted Registration Numbers: [AD58 VNF, BW57 BOF, KT17 DLX, SG18 HTN]
+2025-01-15 20:18:25 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Starting Vehicle Property Validation Test
+2025-01-15 20:18:25 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Extracted Registration Numbers: [AD58 VNF, BW57 BOF, KT17 DLX, SG18 HTN]
+2025-01-15 20:18:25 [ForkJoinPool-1-worker-1] INFO  tests.VehicleSearchTest - Extracted Registration Numbers: [Vehicle{registrationNumber='AD58 VNF', makeModel='BMW 120D M Sport', year='2008'}, Vehicle{registrationNumber='BW57 BOF', makeModel='Toyota Yaris T2', year='2008'}, Vehicle{registrationNumber='KT17 DLX', makeModel='Skoda Superb Sportline TDI S-A', year='2017'}, Vehicle{registrationNumber='SG18 HTN', makeModel='Volkswagen Golf SE Navigation TSI EVO', year='2018'}]
