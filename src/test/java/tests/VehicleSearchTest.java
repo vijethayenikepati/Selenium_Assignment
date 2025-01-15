@@ -5,6 +5,7 @@ import model.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import pages.MileagePage;
 import pages.SearchPage;
 import utils.VehicleFileProcessor;
 
@@ -30,29 +31,31 @@ public class VehicleSearchTest extends BaseTest {
         List<Vehicle> expectedVehicles = processor.readVehicles("src/test/resources/car_output.txt");
         logger.info("Extracted Registration Numbers: {}", expectedVehicles);
 
-
-        driver.get("https://motorway.co.uk/");
         SearchPage searchPage = new SearchPage(driver);
-//
-//        for (int i = 0; i < registrationNumbers.size(); i++) {
-//            String registrationNumber = registrationNumbers.get(i);
-//            Vehicle expectedVehicle = expectedVehicles.get(i);
-//
-//            logger.info("Searching for vehicle with registration: {}", registrationNumber);
-//
-//            // Search vehicle and fetch properties
-//            searchPage.searchVehicle(registrationNumber);
-//            String actualMakeModel = searchPage.getMakeModel();
-//            String actualYear = searchPage.getYear();
-//
-//            logger.info("Expected Make/Model: {}, Actual Make/Model: {}", expectedVehicle.getMakeModel(), actualMakeModel);
-//            logger.info("Expected Year: {}, Actual Year: {}", expectedVehicle.getYear(), actualYear);
-//
-//            // Compare properties
-//            assertEquals(expectedVehicle.getMakeModel(), actualMakeModel, "Make/Model mismatch for: " + registrationNumber);
-//            assertEquals(expectedVehicle.getYear(), actualYear, "Year mismatch for: " + registrationNumber);
-//        }
-//
-//        logger.info("Vehicle Property Validation Test Completed");
+        MileagePage mileagePage = new MileagePage(driver);
+
+        for (int i = 0; i < registrationNumbers.size(); i++) {
+            String registrationNumber = registrationNumbers.get(i);
+            Vehicle expectedVehicle = expectedVehicles.get(i);
+
+            driver.get("https://motorway.co.uk/");
+            logger.info("Searching for vehicle with registration: {}", registrationNumber);
+
+            // Search vehicle and fetch properties
+            searchPage.searchVehicle(registrationNumber);
+
+            mileagePage.clickConfirmButton();
+            String actualMakeModel = searchPage.getMakeModel();
+            String actualYear = searchPage.getYear();
+
+            logger.info("Expected Make/Model: {}, Actual Make/Model: {}", expectedVehicle.getMakeModel(), actualMakeModel);
+            logger.info("Expected Year: {}, Actual Year: {}", expectedVehicle.getYear(), actualYear);
+
+            // Compare properties
+            assertEquals(expectedVehicle.getMakeModel(), actualMakeModel, "Make/Model mismatch for: " + registrationNumber);
+            assertEquals(expectedVehicle.getYear(), actualYear, "Year mismatch for: " + registrationNumber);
+        }
+
+        logger.info("Vehicle Property Validation Test Completed");
     }
 }

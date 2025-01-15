@@ -6,19 +6,25 @@ import org.openqa.selenium.WebDriver;
 public class SearchPage {
     private WebDriver driver;
 
-    private By searchBox = By.id("registration-input"); // Replace with actual locator
-    private By submitButton = By.id("search-button"); // Replace with actual locator
-    private By makeModelField = By.cssSelector(".make-model"); // Replace with actual locator
-    private By yearField = By.cssSelector(".year"); // Replace with actual locator
+    private By searchBtn = By.id("vrm-input"); // Replace with actual locator
+    private By submitBtn = By.xpath("//*[@id='main']//button/span[1]");
+
+    private By makeModelField =By.cssSelector("h1.VehicleHeader-module__model-zw5I");
+    private By yearField = By.xpath("//*[@id='main']//ol/li[1]");
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void searchVehicle(String registrationNumber) {
-        driver.findElement(searchBox).clear();
-        driver.findElement(searchBox).sendKeys(registrationNumber);
-        driver.findElement(submitButton).click();
+        driver.findElement(searchBtn).clear();
+        driver.findElement(searchBtn).sendKeys(registrationNumber);
+        driver.findElement(submitBtn).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getMakeModel() {
